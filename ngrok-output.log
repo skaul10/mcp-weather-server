@@ -1,0 +1,14 @@
+t=2026-05-28T23:55:55+0400 lvl=info msg="no configuration paths supplied"
+t=2026-05-28T23:55:55+0400 lvl=info msg="using configuration at default config path" path="/Users/suhail.kaul/Library/Application Support/ngrok/ngrok.yml"
+t=2026-05-28T23:55:55+0400 lvl=info msg="open config file" path="/Users/suhail.kaul/Library/Application Support/ngrok/ngrok.yml" err=nil
+t=2026-05-28T23:55:55+0400 lvl=info msg="FIPS 140 mode" enabled=false
+t=2026-05-28T23:55:55+0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2026-05-28T23:55:56+0400 lvl=info msg="client session established" obj=tunnels.session
+t=2026-05-28T23:55:56+0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2026-05-28T23:55:56+0400 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:3000 url=https://scuff-saddled-gothic.ngrok-free.dev
+t=2026-05-28T23:58:01+0400 lvl=info msg="received stop request" obj=app stopReq="{err:<nil> restart:false}"
+t=2026-05-28T23:58:01+0400 lvl=info msg="session closing" obj=tunnels.session err=nil
+t=2026-05-28T23:58:01+0400 lvl=info msg="accept failed" obj=tunnels.session obj=csess id=d0f7694637e2 err="reconnecting session closed"
+t=2026-05-28T23:58:01+0400 lvl=info msg="no more state changes" obj=tunnels.session
+t=2026-05-28T23:58:01+0400 lvl=info msg="failed to accept connection: Listener closed" obj=tunnels.session clientid=e3457284b33e63d0e7e4416a51e5fb1a
+t=2026-05-28T23:58:01+0400 lvl=warn msg="Stopping forwarder" name=command_line acceptErr="failed to accept connection: Listener closed"

@@ -1,0 +1,16 @@
+{
+  "name": "mcp-weather-server",
+  "version": "1.0.0",
+  "description": "Simple MCP Weather Server for Agentforce POC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "curl http://localhost:3000/health"
+  },
+  "keywords": ["mcp", "weather", "agentforce"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
