@@ -188,7 +188,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // MCP endpoint
+  // MCP endpoint - Streamable HTTP format for Agentforce
   if (path === '/mcp' && req.method === 'POST') {
     let body = '';
     req.on('data', chunk => { body += chunk; });
@@ -207,6 +207,7 @@ const server = http.createServer(async (req, res) => {
 
         const result = await mcpHandlers[method](params || {});
 
+        // Return as single JSON object (Streamable HTTP format for Agentforce)
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
           jsonrpc: '2.0',
