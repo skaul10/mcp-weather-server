@@ -14,6 +14,19 @@ const PORT = process.env.PORT || 3000;
 
 // MCP Protocol handlers
 const mcpHandlers = {
+  'initialize': async (params) => {
+    return {
+      protocolVersion: '2024-11-05',
+      capabilities: {
+        tools: {}
+      },
+      serverInfo: {
+        name: 'weather-mcp-server',
+        version: '1.0.0'
+      }
+    };
+  },
+
   'tools/list': async () => {
     return {
       tools: [
