@@ -160,6 +160,39 @@ const mcpHandlers = {
             }
           },
           required: ['city']
+        },
+        outputSchema: {
+          type: 'object',
+          properties: {
+            location: {
+              type: 'string',
+              description: 'Full location name with country'
+            },
+            temperature: {
+              type: 'number',
+              description: 'Current temperature in Fahrenheit'
+            },
+            feels_like: {
+              type: 'number',
+              description: 'Feels like temperature in Fahrenheit'
+            },
+            conditions: {
+              type: 'string',
+              description: 'Weather conditions description'
+            },
+            humidity: {
+              type: 'number',
+              description: 'Relative humidity percentage'
+            },
+            wind_speed: {
+              type: 'number',
+              description: 'Wind speed in mph'
+            },
+            precipitation: {
+              type: 'number',
+              description: 'Precipitation in inches'
+            }
+          }
         }
       }]
     };
