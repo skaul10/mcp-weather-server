@@ -15,11 +15,16 @@ const PORT = process.env.PORT || 3000;
 function fetchJson(urlString) {
   return new Promise((resolve, reject) => {
     https.get(urlString, (res) => {
+      console.log(`[HTTP] Status: ${res.statusCode} for ${urlString}`);
       let data = '';
       res.on('data', (chunk) => { data += chunk; });
       res.on('end', () => {
         try {
           const parsed = JSON.parse(data);
+          // Check for API-level errors even with 200 status
+          if (parsed.error || parsed.reason) {
+            console.log(`[HTTP] API returned error:`, JSON.stringify(parsed));
+          }
           resolve(parsed);
         } catch (e) {
           reject(new Error(`JSON parse error: ${e.message}. Raw data: ${data.substring(0, 200)}`));
@@ -83,7 +88,8 @@ async function getWeather(city, countryCode) {
     }
 
     if (!weatherData.current) {
-      throw new Error(`Weather API response missing 'current' property. Keys present: ${Object.keys(weatherData).join(', ')}`);
+      const errorDetail = weatherData.reason || weatherData.error || JSON.stringify(weatherData);
+      throw new Error(`Weather API response missing 'current' property. Keys present: ${Object.keys(weatherData).join(', ')}. Error detail: ${errorDetail}`);
     }
 
     const current = weatherData.current;
