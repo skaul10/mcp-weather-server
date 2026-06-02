@@ -87,7 +87,13 @@ async function getWeather(city, countryCode) {
 
     // Fetch weather data
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch`;
+    console.log(`Fetching weather from: ${weatherUrl}`);
     const weatherData = await fetchJson(weatherUrl);
+    console.log(`Weather data received:`, JSON.stringify(weatherData).substring(0, 200));
+
+    if (!weatherData.current) {
+      throw new Error(`Invalid weather data structure - missing 'current' property`);
+    }
 
     const current = weatherData.current;
     const weatherDesc = getWeatherDescription(current.weather_code);
